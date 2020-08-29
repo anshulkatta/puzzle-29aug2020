@@ -19,8 +19,8 @@ public class ButtonHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Destroy()
+    /*void Destroy()
     {
         numberButton.onClick.RemoveAllListeners();   
-    }
+    }*/
 }

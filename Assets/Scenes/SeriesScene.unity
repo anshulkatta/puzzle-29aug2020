@@ -121,6 +121,31 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41228795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6957116048435638185, guid: 439ad78b20906e24cbaed1561b287449,
+    type: 3}
+  m_PrefabInstance: {fileID: 6957116049279508203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &41228797
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41228795}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d7a00a14b127a214f88b38d83925d8c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &296118540 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6957116049915179783, guid: 439ad78b20906e24cbaed1561b287449,
@@ -353,6 +378,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 733344576}
     m_Modifications:
+    - target: {fileID: 6957116048435638184, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116048435638184, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116048435638191, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.20717634
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116048435638191, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.14960839
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116048435638191, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116048435638191, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6957116048460293385, guid: 439ad78b20906e24cbaed1561b287449,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -637,6 +692,21 @@ PrefabInstance:
         type: 3}
       propertyPath: gameManager
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116049770169338, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -92.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116049770169338, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 68.76373
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957116049770169338, guid: 439ad78b20906e24cbaed1561b287449,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 73.021736
       objectReference: {fileID: 0}
     - target: {fileID: 6957116049962553903, guid: 439ad78b20906e24cbaed1561b287449,
         type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class TickButtonHandler : MonoBehaviour
     void Start()
     {
         tickButton = GetComponent<Button>();
-        wrongTextMsgDisplay.text = "";
+        //wrongTextMsgDisplay.text = "";
         tickButton.onClick.AddListener(delegate {
             //gameManager = GetComponent<GameManager>();
             gameManager = GameObject.FindObjectOfType<GameManager>();
@@ -35,8 +36,8 @@ public class TickButtonHandler : MonoBehaviour
     }
 
     private void displayTextOnWrongAns() {
-        //display text as wrong ans.
         wrongTextMsgDisplay.text = "Wrong Answer";
+        //LeanTween.scale(GameObject.FindWithTag("WrongAnsTag"), new Vector3(2, 3, 3), 2f).setEase(LeanTweenType.easeOutElastic).setOnCompleteOnRepeat(true);
         StartCoroutine("WaitForSec");
     }
 
