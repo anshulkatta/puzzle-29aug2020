@@ -1,0 +1,14 @@
+{
+	"question": [{
+		"label": "Find the next number in the series",
+		"questionSeriesData": [
+			1, 3, 5
+		],
+		"answerArray": [{
+			"answerData": 7
+		}]
+	}]
+}
+
+
+
