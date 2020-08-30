@@ -8,42 +8,46 @@ using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public Question[] questions;
-    private static List<Question> unansweredQuestions;
     [SerializeField]
     private TextMeshProUGUI headingText;
     [SerializeField]
+
+    private static List<Question> unansweredQuestions;
     private Text seriesQuestion = null;
     public Question[] questionsData;
-
-    private Question currentQuestion;
+    public Question currentQuestion;
     private string gameDataFileName = "newdata.json";
-    //private DataController dataController;
+    private readonly System.Random _random = new System.Random();
+
     void Start()
     {
-        //dataController = FindObjectOfType<DataController>();
-        LoadGameData();
-        //loading questions from gamemangaer runtime data addition
+        // Load game data
+        questionsData = getGameData();
+
         unansweredQuestions = questionsData.ToList<Question>();
-        getRandomQuestion();
+        currentQuestion = getRandomQuestion(unansweredQuestions.Count);
+
         headingText.text = currentQuestion.label;
+
         seriesQuestion.text = string.Join(",", currentQuestion.questionSeriesData);
     }
 
-    void getRandomQuestion()
-    {
-        int randomIndex = Random.Range(0, unansweredQuestions.Count);
-        currentQuestion = unansweredQuestions[randomIndex];
-    }
+	public Question getRandomQuestion(int max)  
+	{  
+	  int random = _random.Next(0, max);  
+	  return unansweredQuestions[random];
+	}
 
-    //code for json file to upload
-    private void LoadGameData()
+    /*  
+     * returns Question[]  
+     * by parsing JSON
+     */
+    private Question[] getGameData()
     {
-        // Path.Combine combines strings into a file path
         // Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
-        string dataAsJson;
+        string jsonData = null;
+        Question[] loadedData = null;
         //use this in case of apk file
         if (Application.platform == RuntimePlatform.Android)
         {
@@ -51,27 +55,26 @@ public class GameManager : MonoBehaviour
             www.SendWebRequest();
             while (!www.isDone)
             {
-                dataAsJson = www.downloadHandler.text;
+                jsonData = www.downloadHandler.text;
                 // Pass the json to JsonUtility, and tell it to create a GameData object from it
-                GameData loadedData = JsonUtility.FromJson<GameData>(dataAsJson);
+                loadedData = JsonHelper.FromJson<Question>(jsonData);
                 // Retrieve the allRoundData property of loadedData
-                questionsData = loadedData.question;
+                return loadedData;
             }
         }
-        //in case of development mode 
+        // dev mode
         else if (File.Exists(filePath))
         {
-            // Read the json from the file into a string
-            dataAsJson = File.ReadAllText(filePath);
-            // Pass the json to JsonUtility, and tell it to create a GameData object from it
-            GameData loadedData = JsonUtility.FromJson<GameData>(dataAsJson);
-            // Retrieve the allRoundData property of loadedData
-            questionsData = loadedData.question;
+            jsonData = File.ReadAllText(filePath);
+            loadedData = JsonHelper.FromJson<Question>(jsonData);
+            return loadedData;
         }
         else
         {
             Debug.LogError("Cannot load game data!");
         }
+
+        return null;
     }
 
 }
