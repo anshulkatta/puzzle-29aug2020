@@ -14,9 +14,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Text seriesQuestion = null;
 
-    private static List<Question> unansweredQuestions;
-    public Question[] questionsData;
+    public List<Question> unansweredQuestions;
+    public Question[] questionsData = null;
     public Question currentQuestion;
+    /* Use this to remove question already answered when GameManager is fixed */
+    public int currentQuestionIndex;
     private string gameDataFileName = "newdata.json";
     private readonly System.Random _random = new System.Random();
 
@@ -24,18 +26,19 @@ public class GameManager : MonoBehaviour
     {
         // Load game data
         questionsData = getGameData();
-
         unansweredQuestions = questionsData.ToList<Question>();
-        currentQuestion = getRandomQuestion(unansweredQuestions.Count);
-        headingText.text = currentQuestion.label;
 
+        int randomIndex = getRandomNumber(unansweredQuestions.Count);
+        currentQuestion = unansweredQuestions[randomIndex];
+        currentQuestionIndex = randomIndex;
+
+        headingText.text = currentQuestion.label;
         seriesQuestion.text = string.Join(",", currentQuestion.questionSeriesData);
     }
 
-	public Question getRandomQuestion(int max)  
+	public int getRandomNumber(int max)  
 	{  
-	  int random = _random.Next(0, max);  
-	  return unansweredQuestions[random];
+	  return _random.Next(0, max);
 	}
 
     /*  
