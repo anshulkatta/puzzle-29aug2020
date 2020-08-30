@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI headingText;
+
     [SerializeField]
+    private Text seriesQuestion = null;
 
     private static List<Question> unansweredQuestions;
-    private Text seriesQuestion = null;
     public Question[] questionsData;
     public Question currentQuestion;
     private string gameDataFileName = "newdata.json";
@@ -26,7 +27,6 @@ public class GameManager : MonoBehaviour
 
         unansweredQuestions = questionsData.ToList<Question>();
         currentQuestion = getRandomQuestion(unansweredQuestions.Count);
-
         headingText.text = currentQuestion.label;
 
         seriesQuestion.text = string.Join(",", currentQuestion.questionSeriesData);
