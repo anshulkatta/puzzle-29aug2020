@@ -15,9 +15,4 @@ public class UIManager : MonoBehaviour
         currentLevel.text = level.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

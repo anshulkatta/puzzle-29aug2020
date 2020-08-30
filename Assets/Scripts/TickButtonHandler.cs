@@ -15,6 +15,8 @@ public class TickButtonHandler : MonoBehaviour
     Answer correctAnswer;
     [SerializeField]
     Text wrongTextMsgDisplay;
+    GameObject prefabGameObj;
+    int id;
     void Start()
     {
         tickButton = GetComponent<Button>();
@@ -37,13 +39,13 @@ public class TickButtonHandler : MonoBehaviour
 
     private void displayTextOnWrongAns() {
         wrongTextMsgDisplay.text = "Wrong Answer";
-        //LeanTween.scale(GameObject.FindWithTag("WrongAnsTag"), new Vector3(2, 3, 3), 2f).setEase(LeanTweenType.easeOutElastic).setOnCompleteOnRepeat(true);
-        StartCoroutine("WaitForSec");
+        //not working very smooth only runs for first time
+        LeanTween.scale(GameObject.FindWithTag("WrongAnsTag"), new Vector3(2, 3, 3), 4f).setEaseInElastic().setOnComplete(onCompleteFunc);
     }
 
-    IEnumerator WaitForSec()
-    {
-        yield return new WaitForSeconds(2);
+    public void onCompleteFunc() {
+        LeanTween.cancel(id);
         wrongTextMsgDisplay.text = "";
     }
+
 }
