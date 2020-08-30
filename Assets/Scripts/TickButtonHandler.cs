@@ -42,13 +42,19 @@ public class TickButtonHandler : MonoBehaviour
 
     private void displayTextOnWrongAns() {
         wrongTextMsgDisplay.text = "Wrong Answer";
+        StartCoroutine("WaitForSec");
         //not working very smooth only runs for first time
-        LeanTween.scale(GameObject.FindWithTag("WrongAnsTag"), new Vector3(2, 3, 3), 4f).setEaseInElastic().setOnComplete(onCompleteFunc);
+        //LeanTween.scale(GameObject.FindWithTag("WrongAnsTag"), new Vector3(2, 3, 3), 4f).setEaseInElastic().setOnComplete(onCompleteFunc);
     }
 
-    public void onCompleteFunc() {
-        LeanTween.cancel(id);
+    IEnumerator WaitForSec()
+    {
+        yield return new WaitForSeconds(3);
         wrongTextMsgDisplay.text = "";
     }
 
+    void Destroy()
+    {
+        tickButton.onClick.RemoveAllListeners();
+    }
 }

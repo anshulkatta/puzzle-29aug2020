@@ -12,9 +12,9 @@ public class CrossButtonHandler : MonoBehaviour
     void Start()
     {
         //Get the wrong answer text using below code without mapping in inspector
-        wrongTextMsgDisplay = GameObject.FindWithTag("WrongAnsTag").GetComponent<Text>();
         crossButton = GetComponent<Button>();
         crossButton.onClick.AddListener(delegate {
+            wrongTextMsgDisplay = GameObject.FindWithTag("WrongAnsTag").GetComponent<Text>();
             Debug.Log("inside the text" + crossButton.GetComponentInChildren<Text>().text);
             inputField.text = "";
             wrongTextMsgDisplay.text = "";
