@@ -54,16 +54,8 @@ public class DataController : MonoBehaviour
         //use this in case of apk file
         if (Application.platform == RuntimePlatform.Android)
         {
-            UnityEngine.Networking.UnityWebRequest www = UnityEngine.Networking.UnityWebRequest.Get(filePath);
-            www.SendWebRequest();
-            while (!www.isDone)
-            {
-                jsonData = www.downloadHandler.text;
-                // Pass the json to JsonUtility, and tell it to create a GameData object from it
-                loadedData = JsonHelper.FromJson<Question>(jsonData);
-                // Retrieve the allRoundData property of loadedData
-                return loadedData;
-            }
+            Debug.Log("Android Platform");
+            return fetchDatainAndroid(filePath);
         }
         // dev mode
         else if (File.Exists(filePath))
@@ -78,6 +70,24 @@ public class DataController : MonoBehaviour
         }
 
         return null;
+    }
+
+    private Question[] fetchDatainAndroid(string filePath) {
+        Question[] loadedData = null;
+        string jsonData = null;
+
+        WWW www = new WWW(filePath);
+        Debug.Log("Sending request");
+
+        while (!www.isDone) { }
+
+        jsonData = www.text;
+        // Pass the json to JsonUtility, and tell it to create a GameData object from it
+        Debug.Log("Loading file");
+        loadedData = JsonHelper.FromJson<Question>(jsonData);
+        
+        Debug.Log("return file");
+        return loadedData;
     }
 
     public SeriesLevel getCurrentSeriesLevels() {
