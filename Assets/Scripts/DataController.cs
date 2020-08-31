@@ -47,11 +47,9 @@ public class DataController : MonoBehaviour
      */
     private Question[] populateGameData()
     {
-        // Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build
         string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
         string jsonData = null;
-        Question[] loadedData = null;
-        //use this in case of apk file
+        
         if (Application.platform == RuntimePlatform.Android)
         {
             Debug.Log("Android Platform");
@@ -61,8 +59,7 @@ public class DataController : MonoBehaviour
         else if (File.Exists(filePath))
         {
             jsonData = File.ReadAllText(filePath);
-            loadedData = JsonHelper.FromJson<Question>(jsonData);
-            return loadedData;
+            return parseJsonData(jsonData);
         }
         else
         {
@@ -82,12 +79,11 @@ public class DataController : MonoBehaviour
         while (!www.isDone) { }
 
         jsonData = www.text;
-        // Pass the json to JsonUtility, and tell it to create a GameData object from it
-        Debug.Log("Loading file");
-        loadedData = JsonHelper.FromJson<Question>(jsonData);
-        
-        Debug.Log("return file");
-        return loadedData;
+        return parseJsonData(jsonData);
+    }
+
+    public Question[] parseJsonData(string jsonData) {
+        return JsonHelper.FromJson<Question>(jsonData);
     }
 
     public SeriesLevel getCurrentSeriesLevels() {
