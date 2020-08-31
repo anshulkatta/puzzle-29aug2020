@@ -11,26 +11,28 @@ public class TickButtonHandler : MonoBehaviour
     public InputField inputField;
 
     [SerializeField]
-    Text wrongTextMsgDisplay;
+    private Text wrongTextMsgDisplay;
 
-    Button tickButton;
-    GameManager gameManager;
-    Answer correctAnswer;
-    
-    GameObject prefabGameObj;
+    private Button tickButton;
+    private GameManager gameManager;
+    private DataController dataController;
+    private Answer correctAnswer;
+
+    private GameObject prefabGameObj;
     int id;
 
     void Start()
     {
         tickButton = GetComponent<Button>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
+        dataController = FindObjectOfType<DataController>();
 
         tickButton.onClick.AddListener(delegate {
-            //gameManager = GetComponent<GameManager>();
-            correctAnswer = gameManager.currentQuestion.answerArray[0];
+            correctAnswer = gameManager.getAnswerforCurrentQuestion();
 
             if (inputField.text == correctAnswer.answerData.ToString())
             {
+                dataController.removeQuestionFromUnansweredQuestionsList(gameManager.getCurrentQuestionIndex());
                 SceneManager.LoadScene("CorrectAnswer");
             }
             else
