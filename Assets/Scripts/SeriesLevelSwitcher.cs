@@ -13,8 +13,9 @@ public class SeriesLevelSwitcher : MonoBehaviour
     void Start()
     {
         Debug.Log("inside switcher");
-        LeanTween.scale(GameObject.FindWithTag("CorrectSeriesAnsTag"), new Vector3(2, 2,2), 4f).setEase(LeanTweenType.easeOutElastic).setDestroyOnComplete(true);
+        //LeanTween.scale(GameObject.FindWithTag("BaloonImage"), new Vector3(2, 2,2), 4f).setEase(LeanTweenType.easeOutElastic).setDestroyOnComplete(true);
         LeanTween.moveY(GameObject.FindWithTag("BaloonImage"), 1500f, 8f);
+        LeanTween.moveY(GameObject.FindWithTag("BaloonImage2"), 1500f, 8f);
         nextSceneChangeButton = GetComponent<Button>();
         nextSceneChangeButton.onClick.AddListener(delegate {
             SceneManager.LoadScene("SeriesScene");
