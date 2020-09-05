@@ -8,11 +8,15 @@ public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
     private TextMeshProUGUI currentLevel;
-    private int level = 0;
+    private DataController dataController;
+    private int levelCounter;
     void Start()
     {
         currentLevel = GetComponent<TextMeshProUGUI>();
-        currentLevel.text = level.ToString();
+        dataController = FindObjectOfType<DataController>();
+        levelCounter = dataController.getCurrentLevel()+1;
+        currentLevel.text = levelCounter.ToString();
+        dataController.setCurrentLevel(levelCounter);
     }
 
 }

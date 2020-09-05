@@ -165,7 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seriesLevel: []
-  questions: []
 --- !u!1 &1683305164
 GameObject:
   m_ObjectHideFlags: 0

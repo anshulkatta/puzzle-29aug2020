@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
+using System;
 
 public class DataController : MonoBehaviour
 {
@@ -12,21 +13,18 @@ public class DataController : MonoBehaviour
     private string gameDataFileName = "newdata.json";
     private Question[] questionsData = null;
     private List<Question> unansweredQuestions = null;
+    private string[] scenes;
+    private Dictionary<string, List<Question>> sceneQuestionMap = new Dictionary<string, List<Question>>();
+    private readonly System.Random _random = new System.Random();
+    private int level=0;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene("SeriesScene");
-
         questionsData = populateGameData();
-
         unansweredQuestions = questionsData.ToList<Question>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        setAllSceneInList();
+        SceneManager.LoadScene(getCurrentScene(scenes));
     }
 
     public List<Question> getUnansweredQuestionsList() {
@@ -89,5 +87,60 @@ public class DataController : MonoBehaviour
     public SeriesLevel getCurrentSeriesLevels() {
         return seriesLevel[0];
     }
-    
+
+    private void setAllSceneInList() {
+        int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
+        scenes = new string[sceneCount];
+        for (int i = 0; i < sceneCount; i++)
+        {
+            scenes[i] = System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i));
+        }
+        setSceneWithQuestion();
+    }
+
+    private void setSceneWithQuestion() {
+        foreach (string sceneName in scenes) {
+            if (sceneName == "SeriesScene")
+            {
+                List<Question> seriesScenelist = unansweredQuestions.Where(o => o.puzzleType == "seriesNumberPuzzle").ToList();
+                sceneQuestionMap.Add(sceneName, seriesScenelist);
+            }
+            else if (sceneName == "CountImageByFindingHiddenImage")
+            {
+                List<Question> countImageHidden = unansweredQuestions.Where(o => o.puzzleType == "countImageByFindingHiddenImage").ToList();
+                sceneQuestionMap.Add(sceneName, countImageHidden);
+            }
+            else if (sceneName == "CountImageTotal") {
+                List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "countImageTotal").ToList();
+                sceneQuestionMap.Add(sceneName, countImage);
+            }
+            else if (sceneName == "CountTriangle")
+            {
+                List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "countTriangle").ToList();
+                sceneQuestionMap.Add(sceneName, countImage);
+            }
+        }
+    }
+    public Dictionary<string, List<Question>> getAllScenesToQuestions() {
+        return this.sceneQuestionMap;
+    }
+
+    public int getRandomNumber(int max)
+    {
+        return _random.Next(0, max);
+    }
+
+    public String getCurrentScene(string[] sceneArray) {
+        int randomNum = this.getRandomNumber(sceneArray.Length-1);
+        return sceneArray[randomNum];
+    }
+
+    public int getCurrentLevel() {
+        return level;
+    }
+
+    public void setCurrentLevel(int level)
+    {
+         this.level = level;
+    }
 }

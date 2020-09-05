@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 498776587}
   - component: {fileID: 498776589}
   - component: {fileID: 498776588}
+  - component: {fileID: 498776590}
   m_Layer: 5
   m_Name: Hurraytext
   m_TagString: CorrectSeriesAnsTag
@@ -276,7 +277,26 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498776586}
-  m_CullTransparentMesh: 0
+  m_CullTransparentMesh: 1
+--- !u!95 &498776590
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498776586}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8e2786551df8734d8645c412e09a68c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &669826755
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,7 +697,7 @@ GameObject:
   - component: {fileID: 1415554498}
   m_Layer: 5
   m_Name: Baloon1
-  m_TagString: Untagged
+  m_TagString: BaloonImage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -698,7 +718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.485}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -129, y: -248}
+  m_AnchoredPosition: {x: -142, y: 31}
   m_SizeDelta: {x: 116.8996, y: 153.07843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1415554498
@@ -1099,7 +1119,7 @@ GameObject:
   - component: {fileID: 2004171668}
   m_Layer: 5
   m_Name: Baloon2
-  m_TagString: Untagged
+  m_TagString: BaloonImage2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1120,7 +1140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66458327, y: 0.25625}
   m_AnchorMax: {x: 0.8104167, y: 0.25625}
-  m_AnchoredPosition: {x: 24.828, y: -59.003}
+  m_AnchoredPosition: {x: 32, y: 220}
   m_SizeDelta: {x: 49.65631, y: 165.08377}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004171668

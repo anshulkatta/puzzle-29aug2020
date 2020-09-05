@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine.UI;
 using TMPro;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,22 +19,17 @@ public class GameManager : MonoBehaviour
     private Question currentQuestion;
     private int currentQuestionIndex;
 
-    private readonly System.Random _random = new System.Random();
 
     void Start()
     {
         // Load game data
         dataController = FindObjectOfType<DataController>();
-        List<Question> unansweredQuestionsList = dataController.getUnansweredQuestionsList();
-
-        if (unansweredQuestionsList != null && unansweredQuestionsList.Count > 0) {
-            int randomIndex = getRandomNumber(unansweredQuestionsList.Count);
-            // update current question index
-            this.currentQuestionIndex = randomIndex;
-
-            currentQuestion = this.getCurrentQuestion(unansweredQuestionsList, currentQuestionIndex);
-
-            headingText.text = currentQuestion.label;
+        //List<Question> unansweredQuestionsList = dataController.getUnansweredQuestionsList();
+        currentQuestion=this.getQuestionByScene(dataController);
+        headingText.text = currentQuestion.label;
+        int questionSeriesArg = currentQuestion.questionSeriesData.Length;
+        if (questionSeriesArg > 0)
+        {
             seriesQuestion.text = string.Join(",", currentQuestion.questionSeriesData);
         }
     }
@@ -50,7 +46,16 @@ public class GameManager : MonoBehaviour
         return this.currentQuestionIndex;
     }
 
-    private int getRandomNumber(int max) {
-        return _random.Next(0, max);
+    public Question getQuestionByScene(DataController dataController)
+    {
+        Dictionary<string, List<Question>> dictSceneQuestion = dataController.getAllScenesToQuestions();
+            string currentSceneName = SceneManager.GetActiveScene().name;
+        List<Question> questionList = dictSceneQuestion[currentSceneName];
+        int randomIndex = dataController.getRandomNumber(questionList.Count);
+        // update current question index
+        this.currentQuestionIndex = randomIndex;
+        currentQuestion = this.getCurrentQuestion(questionList, currentQuestionIndex);
+        return currentQuestion;
     }
+
 }

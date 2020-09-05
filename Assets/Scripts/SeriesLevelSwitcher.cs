@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,8 @@ public class SeriesLevelSwitcher : MonoBehaviour
 {
     // switch scene if button is clicked
     Button nextSceneChangeButton;
-    private TextMeshProUGUI headingText;
+    DataController dataController;
+    private Dictionary<string, List<Question>> sceneQuestionMap;
     void Start()
     {
         Debug.Log("inside switcher");
@@ -17,8 +19,17 @@ public class SeriesLevelSwitcher : MonoBehaviour
         LeanTween.moveY(GameObject.FindWithTag("BaloonImage"), 1500f, 8f);
         LeanTween.moveY(GameObject.FindWithTag("BaloonImage2"), 1500f, 8f);
         nextSceneChangeButton = GetComponent<Button>();
+        dataController = FindObjectOfType<DataController>();
+        sceneQuestionMap = dataController.getAllScenesToQuestions();
         nextSceneChangeButton.onClick.AddListener(delegate {
-            SceneManager.LoadScene("SeriesScene");
+            if (sceneQuestionMap.Count > 0)
+            {
+                int randomNum = dataController.getRandomNumber(sceneQuestionMap.Count-1);
+                SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
+            }
+            else {
+                Debug.Log("Game Ended");
+            }
         });
     }
 

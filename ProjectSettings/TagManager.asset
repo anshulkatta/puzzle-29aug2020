@@ -7,6 +7,9 @@ TagManager:
   - WrongAnsTag
   - CorrectSeriesAnsTag
   - BaloonImage
+  - Baloon2
+  - Baloon2Image
+  - BaloonImage2
   layers:
   - Default
   - TransparentFX
