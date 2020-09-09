@@ -28,7 +28,7 @@ public class SeriesLevelSwitcher : MonoBehaviour
                 SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
             }
             else {
-                Debug.Log("Game Ended");
+                SceneManager.LoadScene("GameOver");
             }
         });
     }

@@ -21,6 +21,15 @@ EditorBuildSettings:
     path: Assets/Scenes/CountTriangle.unity
     guid: 151877c32504fbe48af574b98aa6a286
   - enabled: 1
+    path: Assets/Scenes/TShirtProblem.unity
+    guid: 1c8e6d6e02420f640b09e139769d2297
+  - enabled: 1
+    path: Assets/Scenes/TextSimplePuzzle.unity
+    guid: f0a235b6e1cc4134b908320fd5c7ba18
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: c23b67d55bb6a0e469da9eeec98f9e68
+  - enabled: 1
     path: Assets/Scenes/CorrectAnswer.unity
     guid: cf66de2411f434c45a876f9eecc4675c
   m_configObjects: {}

@@ -2,10 +2,26 @@
 	"Items": [
 	{
 		"puzzleType": "countImageByFindingHiddenImage",
-		"label": "Find the total count of images",
+		"label": "Find the total count of apples",
 		"questionSeriesData": [],
 		"answerArray": [{
 			"answerData": 9
+		}]
+	},
+	{
+		"puzzleType": "textSimplePuzzle",
+		"label": "Mr. and Mrs. Sharma have six daughters and each daughter has one brother. How many people are in the Sharma family?",
+		"questionSeriesData": [],
+		"answerArray": [{
+			"answerData": 9
+		}]
+	},
+	{
+		"puzzleType": "tShirtProblem",
+		"label": "Find number of holes in tshirt",
+		"questionSeriesData": [],
+		"answerArray": [{
+			"answerData": 8
 		}]
 	},
 	{
@@ -21,7 +37,7 @@
 		"label": "Count the Triangles",
 		"questionSeriesData": [],
 		"answerArray": [{
-			"answerData": 6
+			"answerData": 11
 		}]
 	},
 	{
@@ -32,26 +48,6 @@
 		],
 		"answerArray": [{
 			"answerData": 7
-		}]
-	},
-	{
-		"puzzleType": "seriesNumberPuzzle",
-		"label": "Find the next number in the series",
-		"questionSeriesData": [
-			8,10,12
-		],
-		"answerArray": [{
-			"answerData": 14
-		}]
-	},
-	{
-		"puzzleType": "seriesNumberPuzzle",
-		"label": "Find the next number in the series",
-		"questionSeriesData": [
-			11,12,13
-		],
-		"answerArray": [{
-			"answerData": 14
 		}]
 	},
 	{

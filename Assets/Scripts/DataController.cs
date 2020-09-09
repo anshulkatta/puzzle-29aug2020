@@ -119,6 +119,16 @@ public class DataController : MonoBehaviour
                 List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "countTriangle").ToList();
                 sceneQuestionMap.Add(sceneName, countImage);
             }
+            else if (sceneName == "TextSimplePuzzle")
+            {
+                List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "textSimplePuzzle").ToList();
+                sceneQuestionMap.Add(sceneName, countImage);
+            }
+            else if (sceneName == "TShirtProblem")
+            {
+                List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "tShirtProblem").ToList();
+                sceneQuestionMap.Add(sceneName, countImage);
+            }
         }
     }
     public Dictionary<string, List<Question>> getAllScenesToQuestions() {
@@ -131,7 +141,7 @@ public class DataController : MonoBehaviour
     }
 
     public String getCurrentScene(string[] sceneArray) {
-        int randomNum = this.getRandomNumber(sceneArray.Length-1);
+        int randomNum = this.getRandomNumber(sceneArray.Length-2);
         return sceneArray[randomNum];
     }
 
