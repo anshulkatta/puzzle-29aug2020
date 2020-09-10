@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class FeedBackHandler : MonoBehaviour
 {
@@ -21,11 +23,19 @@ public class FeedBackHandler : MonoBehaviour
     [SerializeField]
     private Button submitFeedBackButton;
 
+    private Dictionary<string, List<Question>> sceneQuestionMap;
+    private DataController dataController;
+
     void Start()
-    {       
+    {
+        dataController = FindObjectOfType<DataController>();
+        sceneQuestionMap = dataController.getAllScenesToQuestions();
+        string currentkey = SceneManager.GetActiveScene().name;
+
         submitFeedBackButton.onClick.AddListener(delegate {
             List<string> puzzleFeedBack = new List<string>();
-            if (optionA.isOn) {
+            if (optionA.isOn)
+            {
                 puzzleFeedBack.Add(optionA.GetComponentInChildren<Text>().text);
             }
 
@@ -42,6 +52,15 @@ public class FeedBackHandler : MonoBehaviour
             if (optionD.isOn)
             {
                 puzzleFeedBack.Add(optionD.GetComponentInChildren<Text>().text);
+            }
+
+            if (puzzleFeedBack.Count > 0) {                
+                sceneQuestionMap.Remove(currentkey);
+                if (sceneQuestionMap.Count > 0)
+                {
+                    int randomNum = dataController.getRandomNumber(sceneQuestionMap.Count - 1);
+                    SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
+                }
             }
         });
     }
