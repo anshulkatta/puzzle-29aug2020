@@ -29,7 +29,7 @@ public class FeedBackHandler : MonoBehaviour
     void Start()
     {
         dataController = FindObjectOfType<DataController>();
-        sceneQuestionMap = dataController.getAllScenesToQuestions();
+        sceneQuestionMap = dataController.getScenesToQuestions();
         string currentkey = SceneManager.GetActiveScene().name;
 
         submitFeedBackButton.onClick.AddListener(delegate {
