@@ -21,11 +21,8 @@ public class FeedBackHandler : MonoBehaviour
     [SerializeField]
     private Button submitFeedBackButton;
 
-    // Start is called before the first frame update
     void Start()
-    {
-        submitFeedBackButton = GetComponent<Button>();
-
+    {       
         submitFeedBackButton.onClick.AddListener(delegate {
             List<string> puzzleFeedBack = new List<string>();
             if (optionA.isOn) {
@@ -46,14 +43,7 @@ public class FeedBackHandler : MonoBehaviour
             {
                 puzzleFeedBack.Add(optionD.GetComponentInChildren<Text>().text);
             }
-
-            Debug.Log(puzzleFeedBack.Count);
         });
-    }
-
-    public void ValueChanged()
-    {
-        Debug.Log("Value Changed");
     }
 
 }
