@@ -100,6 +100,7 @@ public class DataController : MonoBehaviour
 
     private void setSceneWithQuestion() {
         foreach (string sceneName in scenes) {
+            Debug.Log(sceneName);
             if (sceneName == "SeriesScene")
             {
                 List<Question> seriesScenelist = unansweredQuestions.Where(o => o.puzzleType == "seriesNumberPuzzle").ToList();
@@ -110,24 +111,29 @@ public class DataController : MonoBehaviour
                 List<Question> countImageHidden = unansweredQuestions.Where(o => o.puzzleType == "countImageByFindingHiddenImage").ToList();
                 sceneQuestionMap.Add(sceneName, countImageHidden);
             }
-            else if (sceneName == "CountImageTotal") {
+            else if (sceneName == "CountImageTotal")
+            {
                 List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "countImageTotal").ToList();
                 sceneQuestionMap.Add(sceneName, countImage);
             }
             else if (sceneName == "CountTriangle")
             {
-                List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "countTriangle").ToList();
-                sceneQuestionMap.Add(sceneName, countImage);
+                List<Question> countTriangle = unansweredQuestions.Where(o => o.puzzleType == "countTriangle").ToList();
+                sceneQuestionMap.Add(sceneName, countTriangle);
             }
             else if (sceneName == "TextSimplePuzzle")
             {
-                List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "textSimplePuzzle").ToList();
-                sceneQuestionMap.Add(sceneName, countImage);
+                List<Question> textSimplePuzzle = unansweredQuestions.Where(o => o.puzzleType == "textSimplePuzzle").ToList();
+                sceneQuestionMap.Add(sceneName, textSimplePuzzle);
             }
             else if (sceneName == "TShirtProblem")
             {
-                List<Question> countImage = unansweredQuestions.Where(o => o.puzzleType == "tShirtProblem").ToList();
-                sceneQuestionMap.Add(sceneName, countImage);
+                List<Question> tShirtProblem = unansweredQuestions.Where(o => o.puzzleType == "tShirtProblem").ToList();
+                sceneQuestionMap.Add(sceneName, tShirtProblem);
+            }
+            else if (sceneName == "FeedbackScene")
+            {
+                sceneQuestionMap.Add(sceneName, null);
             }
         }
     }
