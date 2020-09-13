@@ -32,12 +32,14 @@ public class FeedBackHandler : MonoBehaviour
         submitFeedBackButton.onClick.AddListener(delegate {
             List<string> puzzleFeedBack = new List<string>();
             FeedBack feedBack = new FeedBack();
-            if (inputField1.text != null) {
+            if (inputField1.text != null)
+            {
                 feedBack.question1 = feedBackQuestion1.text;
                 feedBack.answer1 = inputField1.text;
             }
 
-            if (inputField2.text != null) {
+            if (inputField2.text != null)
+            {
                 feedBack.question2 = feedBackQuestion2.text;
                 feedBack.answer2 = inputField2.text;
             }
@@ -50,11 +52,27 @@ public class FeedBackHandler : MonoBehaviour
         });
     }
 
-    private void submitFeedBack(FeedBack feedBack) {
-        Debug.Log(feedBack.question1);
+    private void submitFeedBack(FeedBack feedBack)
+    {
+        string POSTAddUserURL = "http://localhost:8080/submitFeedback";
+        WWW www;
+        Hashtable postHeader = new Hashtable();
+        postHeader.Add("Content-Type", "application/json");
+
+        // convert json string to byte
+        var formData = System.Text.Encoding.UTF8.GetBytes(JsonUtility.ToJson(feedBack));
+
+        www = new WWW(POSTAddUserURL, formData, postHeader);
+        StartCoroutine(WaitForRequest(www));
     }
 
-    class FeedBack {
+    private IEnumerator WaitForRequest(WWW data)
+    {
+        yield return data;
+    }
+
+    class FeedBack
+    {
         public string question1;
         public string question2;
 
