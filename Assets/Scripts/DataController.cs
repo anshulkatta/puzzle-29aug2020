@@ -100,7 +100,6 @@ public class DataController : MonoBehaviour
 
     private void setSceneWithQuestion() {
         foreach (string sceneName in scenes) {
-            Debug.Log(sceneName);
             if (sceneName == "SeriesScene")
             {
                 List<Question> seriesScenelist = unansweredQuestions.Where(o => o.puzzleType == "seriesNumberPuzzle").ToList();
@@ -130,10 +129,6 @@ public class DataController : MonoBehaviour
             {
                 List<Question> tShirtProblem = unansweredQuestions.Where(o => o.puzzleType == "tShirtProblem").ToList();
                 sceneQuestionMap.Add(sceneName, tShirtProblem);
-            }
-            else if (sceneName == "FeedbackScene")
-            {
-                sceneQuestionMap.Add(sceneName, null);
             }
         }
     }

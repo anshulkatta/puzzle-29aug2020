@@ -4,65 +4,57 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class FeedBackHandler : MonoBehaviour
 {
+    [SerializeField]
+    private TextMeshProUGUI feedBackQuestion1;
 
     [SerializeField]
-    public Toggle optionA;
+    private TextMeshProUGUI feedBackQuestion2;
 
     [SerializeField]
-    public Toggle optionB;
+    private TMP_InputField inputField1;
 
     [SerializeField]
-    public Toggle optionC;
-
-    [SerializeField]
-    public Toggle optionD;
+    private TMP_InputField inputField2;
 
     [SerializeField]
     private Button submitFeedBackButton;
 
-    private Dictionary<string, List<Question>> sceneQuestionMap;
-    private DataController dataController;
-
     void Start()
     {
-        dataController = FindObjectOfType<DataController>();
-        sceneQuestionMap = dataController.getAllScenesToQuestions();
-        string currentkey = SceneManager.GetActiveScene().name;
-
         submitFeedBackButton.onClick.AddListener(delegate {
             List<string> puzzleFeedBack = new List<string>();
-            if (optionA.isOn)
-            {
-                puzzleFeedBack.Add(optionA.GetComponentInChildren<Text>().text);
+            FeedBack feedBack = new FeedBack();
+            if (inputField1.text != null) {
+                feedBack.question1 = feedBackQuestion1.text;
+                feedBack.answer1 = inputField1.text;
             }
 
-            if (optionB.isOn)
-            {
-                puzzleFeedBack.Add(optionB.GetComponentInChildren<Text>().text);
+            if (inputField2.text != null) {
+                feedBack.question2 = feedBackQuestion2.text;
+                feedBack.answer2 = inputField2.text;
             }
 
-            if (optionC.isOn)
-            {
-                puzzleFeedBack.Add(optionC.GetComponentInChildren<Text>().text);
-            }
+            submitFeedBack(feedBack);
 
-            if (optionD.isOn)
-            {
-                puzzleFeedBack.Add(optionD.GetComponentInChildren<Text>().text);
-            }
+            SceneManager.LoadScene("GameOver");
 
-            if (puzzleFeedBack.Count > 0) {                
-                sceneQuestionMap.Remove(currentkey);
-                if (sceneQuestionMap.Count > 0)
-                {
-                    int randomNum = dataController.getRandomNumber(sceneQuestionMap.Count - 1);
-                    SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
-                }
-            }
         });
+    }
+
+    private void submitFeedBack(FeedBack feedBack) {
+        Debug.Log(feedBack.question1);
+    }
+
+    class FeedBack {
+        public string question1;
+        public string question2;
+
+        public string answer1;
+        public string answer2;
     }
 
 }
