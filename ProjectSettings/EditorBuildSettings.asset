@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TextSimplePuzzle.unity
     guid: f0a235b6e1cc4134b908320fd5c7ba18
   - enabled: 1
+    path: Assets/Scenes/FeedbackScene.unity
+    guid: 1f09a5afdcaffa84faeeb8f3ee5d386b
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: c23b67d55bb6a0e469da9eeec98f9e68
   - enabled: 1

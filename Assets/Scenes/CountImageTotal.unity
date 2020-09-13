@@ -350,6 +350,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8480413336700656851, guid: b807a15ab95b8c840a7cde7ebc96e1be,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8559991131042348535, guid: b807a15ab95b8c840a7cde7ebc96e1be,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1457,7 +1462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26, y: -141}
+  m_AnchoredPosition: {x: 195, y: -143}
   m_SizeDelta: {x: 73.021736, y: 68.76373}
   m_Pivot: {x: 0.00000008940697, y: -0.4348021}
 --- !u!222 &8599280260879765084
@@ -3094,7 +3099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 223.36926, y: -84}
+  m_AnchoredPosition: {x: 20, y: -84}
   m_SizeDelta: {x: 66.19156, y: 49.386444}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8599280261754132552
@@ -3118,16 +3123,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: This will be our label for each level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1b4befbf95da1294aafc205bb25b8439, type: 2}
-  m_sharedMaterial: {fileID: -4435337004477634132, guid: 1b4befbf95da1294aafc205bb25b8439,
+  m_fontAsset: {fileID: 11400000, guid: d4bfa0fa1e532144da59d7226a916c11, type: 2}
+  m_sharedMaterial: {fileID: -8921647091836255144, guid: d4bfa0fa1e532144da59d7226a916c11,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278219020
+  m_fontColor: {r: 0.047058824, g: 0.44313726, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3145,10 +3150,10 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24.25
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3162,7 +3167,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3191,7 +3196,7 @@ MonoBehaviour:
     spaceCount: 7
     wordCount: 8
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
