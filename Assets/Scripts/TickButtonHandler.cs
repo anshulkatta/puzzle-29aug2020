@@ -14,6 +14,7 @@ public class TickButtonHandler : MonoBehaviour
     private Text wrongTextMsgDisplay;
     private Button tickButton;
     private GameManager gameManager;
+    private SaveManager saveManager;
     private DataController dataController;
     private Answer correctAnswer;
     private Dictionary<string, List<Question>> sceneQuestionMap;
@@ -22,7 +23,9 @@ public class TickButtonHandler : MonoBehaviour
     {
         tickButton = GetComponent<Button>();
         gameManager = GameObject.FindObjectOfType<GameManager>();
+        saveManager = GameObject.FindObjectOfType<SaveManager>();
         dataController = FindObjectOfType<DataController>();
+        string filename="save.dat";
         tickButton.onClick.AddListener(delegate
         {
             correctAnswer = gameManager.getAnswerforCurrentQuestion();
@@ -30,9 +33,10 @@ public class TickButtonHandler : MonoBehaviour
             if (inputField.text == correctAnswer.answerData.ToString())
             {
                 dataController.removeQuestionFromUnansweredQuestionsList(gameManager.getCurrentQuestionIndex());
-                sceneQuestionMap = dataController.getAllScenesToQuestions();
+                sceneQuestionMap = dataController.getScenesToQuestions();
                 string currentkey = SceneManager.GetActiveScene().name;
                 List<Question> currentQuesList=sceneQuestionMap[currentkey];
+                //list with different scene only remove the question else remove complete object
                 if (currentQuesList.Count > 1)
                 {
                     currentQuesList.RemoveAt(gameManager.getCurrentQuestionIndex());
@@ -41,6 +45,7 @@ public class TickButtonHandler : MonoBehaviour
                 else {                   
                     sceneQuestionMap.Remove(currentkey);
                 }
+                saveManager.saveDataToDisk(filename);
                 SceneManager.LoadScene("CorrectAnswer");
             }
             else

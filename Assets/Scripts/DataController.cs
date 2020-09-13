@@ -17,14 +17,30 @@ public class DataController : MonoBehaviour
     private Dictionary<string, List<Question>> sceneQuestionMap = new Dictionary<string, List<Question>>();
     private readonly System.Random _random = new System.Random();
     private int level=0;
+    private SaveManager saveManager;
 
     void Start()
     {
+        string fileName = "save.dat";
+        saveManager = GameObject.FindObjectOfType<SaveManager>();
         DontDestroyOnLoad(gameObject);
-        questionsData = populateGameData();
-        unansweredQuestions = questionsData.ToList<Question>();
-        setAllSceneInList();
-        SceneManager.LoadScene(getCurrentScene(scenes));
+            if(saveManager.loadDataFromDisk(fileName))
+            {
+                unansweredQuestions = sceneQuestionMap.SelectMany(d => d.Value).ToList();
+                int randomNum = this.getRandomNumber(sceneQuestionMap.Count - 1);
+                SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
+            }     
+        else
+        {
+            /*bool isFileDel = saveManager.deleteData();
+            if (isFileDel) {
+                Debug.Log("File Deleted");
+            }*/
+            questionsData = populateGameData();
+            unansweredQuestions = questionsData.ToList<Question>();
+            setAllSceneInList();
+            SceneManager.LoadScene(getCurrentScene(scenes));
+        }
     }
 
     public List<Question> getUnansweredQuestionsList() {
@@ -132,7 +148,12 @@ public class DataController : MonoBehaviour
             }
         }
     }
-    public Dictionary<string, List<Question>> getAllScenesToQuestions() {
+
+    public void setScenesToQuestions(Dictionary<string, List<Question>> dictionaryVar)
+    {
+        this.sceneQuestionMap= dictionaryVar;
+    }
+    public Dictionary<string, List<Question>> getScenesToQuestions() {
         return this.sceneQuestionMap;
     }
 

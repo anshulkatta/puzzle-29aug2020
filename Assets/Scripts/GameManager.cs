@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     public Question getQuestionByScene(DataController dataController)
     {
-        Dictionary<string, List<Question>> dictSceneQuestion = dataController.getAllScenesToQuestions();
+        Dictionary<string, List<Question>> dictSceneQuestion = dataController.getScenesToQuestions();
             string currentSceneName = SceneManager.GetActiveScene().name;
         List<Question> questionList = dictSceneQuestion[currentSceneName];
         int randomIndex = dataController.getRandomNumber(questionList.Count);
