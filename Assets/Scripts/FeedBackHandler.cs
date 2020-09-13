@@ -23,8 +23,12 @@ public class FeedBackHandler : MonoBehaviour
     [SerializeField]
     private Button submitFeedBackButton;
 
+    private SaveManager saveManager;
+    private string filename = "save.dat";
+
     void Start()
     {
+        saveManager = FindObjectOfType<SaveManager>();
         submitFeedBackButton.onClick.AddListener(delegate {
             List<string> puzzleFeedBack = new List<string>();
             FeedBack feedBack = new FeedBack();
@@ -40,6 +44,7 @@ public class FeedBackHandler : MonoBehaviour
 
             submitFeedBack(feedBack);
 
+            bool isFileDeleted = saveManager.deleteData(filename);
             SceneManager.LoadScene("GameOver");
 
         });
