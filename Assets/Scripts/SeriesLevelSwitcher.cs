@@ -12,8 +12,6 @@ public class SeriesLevelSwitcher : MonoBehaviour
     Button nextSceneChangeButton;
     DataController dataController;
     private Dictionary<string, List<Question>> sceneQuestionMap;
-    SaveManager saveManager;
-    string filename = "save.dat";
     void Start()
     {
         Debug.Log("inside switcher");
@@ -22,7 +20,6 @@ public class SeriesLevelSwitcher : MonoBehaviour
         LeanTween.moveY(GameObject.FindWithTag("BaloonImage2"), 1500f, 8f);
         nextSceneChangeButton = GetComponent<Button>();
         dataController = FindObjectOfType<DataController>();
-        saveManager = FindObjectOfType<SaveManager>();
         sceneQuestionMap = dataController.getScenesToQuestions();
         nextSceneChangeButton.onClick.AddListener(delegate {
             if (sceneQuestionMap.Count > 0)
@@ -31,8 +28,8 @@ public class SeriesLevelSwitcher : MonoBehaviour
                 SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
             }
             else {
-                bool isFileDeleted=saveManager.deleteData(filename);
-                SceneManager.LoadScene("GameOver");
+                Debug.Log("loading feedback");
+                SceneManager.LoadScene("FeedbackScene");
             }
         });
     }
