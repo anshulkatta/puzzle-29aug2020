@@ -54,7 +54,7 @@ public class FeedBackHandler : MonoBehaviour
 
     private void submitFeedBack(FeedBack feedBack)
     {
-        string POSTAddUserURL = "http://localhost:8080/submitFeedback";
+        string POSTAddUserURL = "https://feedbackservice-289716.appspot.com/submitFeedback";
         WWW www;
         Hashtable postHeader = new Hashtable();
         postHeader.Add("Content-Type", "application/json");
