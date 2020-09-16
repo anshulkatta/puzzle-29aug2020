@@ -9,5 +9,5 @@ public class Question
     public string label;
     public int[] questionSeriesData;
     public Answer[] answerArray;
-
+    public string hint;
 }

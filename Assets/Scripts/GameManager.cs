@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
         return this.currentQuestionIndex;
     }
 
+    public Question getCurrentQuestion() {
+        return this.currentQuestion;
+    }
+
     public Question getQuestionByScene(DataController dataController)
     {
         Dictionary<string, List<Question>> dictSceneQuestion = dataController.getScenesToQuestions();
