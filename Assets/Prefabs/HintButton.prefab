@@ -89,7 +89,7 @@ Animator:
   m_GameObject: {fileID: 3928398879247695894}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c88a908c345149d46972d47c8d78265a, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 3489516478279802407}
   - component: {fileID: 7560100237598106947}
   - component: {fileID: 3456579745525885510}
+  - component: {fileID: 1371093698743136948}
   m_Layer: 5
   m_Name: HintButton
   m_TagString: Untagged
@@ -229,7 +230,7 @@ Animator:
   m_GameObject: {fileID: 5761676406068020075}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e96c1484a64700e4c8f6a8de4c18ca86, type: 2}
+  m_Controller: {fileID: 9100000, guid: 01e2143c085c3a7448db76db91212508, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -247,7 +248,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5761676406068020075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62cd8ea05a835b140a447be4a96328e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3631bb8a7ddd1c44c920bc572a90c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1371093698743136948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761676406068020075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed25b3020f5e93418604968f98678c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpBox: {fileID: 0}
+  animator: {fileID: 0}
   hintText: {fileID: 0}
