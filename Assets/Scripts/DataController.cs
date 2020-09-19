@@ -27,8 +27,12 @@ public class DataController : MonoBehaviour
             if(saveManager.loadDataFromDisk(fileName))
             {
                 unansweredQuestions = sceneQuestionMap.SelectMany(d => d.Value).ToList();
-                int randomNum = this.getRandomNumber(sceneQuestionMap.Count - 1);
-                SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
+                if (sceneQuestionMap.Count > 0) {
+                    int randomNum = this.getRandomNumber(sceneQuestionMap.Count - 1);
+                    SceneManager.LoadScene(sceneQuestionMap.ElementAt(randomNum).Key);
+                } else {
+                    SceneManager.LoadScene("FeedbackScene");
+                }
             }     
         else
         {
@@ -88,8 +92,7 @@ public class DataController : MonoBehaviour
         string jsonData = null;
 
         WWW www = new WWW(filePath);
-        Debug.Log("Sending request");
-
+        
         while (!www.isDone) { }
 
         jsonData = www.text;
