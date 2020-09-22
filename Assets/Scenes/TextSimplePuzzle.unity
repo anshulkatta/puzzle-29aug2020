@@ -589,7 +589,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4657703165689495203}
   m_TextComponent: {fileID: 4657703167103948142}
   m_Placeholder: {fileID: 4657703166766965190}
