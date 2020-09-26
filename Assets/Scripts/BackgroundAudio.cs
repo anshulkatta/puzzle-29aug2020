@@ -6,7 +6,10 @@ public class BackgroundAudio : MonoBehaviour
 {
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+       // if (this.gameObject.active)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
 }

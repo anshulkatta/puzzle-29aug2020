@@ -10,6 +10,8 @@ TagManager:
   - Baloon2
   - Baloon2Image
   - BaloonImage2
+  - DataControllerLoad
+  - BackGroundAudio
   layers:
   - Default
   - TransparentFX

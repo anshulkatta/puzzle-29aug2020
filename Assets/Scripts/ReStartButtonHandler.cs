@@ -14,8 +14,9 @@ public class ReStartButtonHandler : MonoBehaviour
         DataController dataController = FindObjectOfType<DataController>();
         BackgroundAudio backgroundAudio = FindObjectOfType<BackgroundAudio>();
         restartButton.onClick.AddListener(delegate {
-            Destroy(dataController);
-            Destroy(backgroundAudio);
+            Destroy(GameObject.FindGameObjectWithTag("DataControllerLoad"));
+            Destroy(GameObject.FindGameObjectWithTag("BackGroundAudio"));
+            //Destroy(backgroundAudio);
             SceneManager.LoadScene("PersistentScene");
         });
      

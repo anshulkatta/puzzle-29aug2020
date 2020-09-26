@@ -24,6 +24,7 @@ public class DataController : MonoBehaviour
         string fileName = "save.dat";
         saveManager = GameObject.FindObjectOfType<SaveManager>();
         DontDestroyOnLoad(gameObject);
+
             if(saveManager.loadDataFromDisk(fileName))
             {
                 unansweredQuestions = sceneQuestionMap.SelectMany(d => d.Value).ToList();
@@ -166,7 +167,7 @@ public class DataController : MonoBehaviour
     }
 
     public String getCurrentScene(string[] sceneArray) {
-        int randomNum = this.getRandomNumber(sceneArray.Length-2);
+        int randomNum = this.getRandomNumber(sceneArray.Length-3);
         return sceneArray[randomNum];
     }
 

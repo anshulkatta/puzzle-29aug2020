@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 273550490}
   m_Layer: 0
   m_Name: DataController
-  m_TagString: Untagged
+  m_TagString: DataControllerLoad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,11 +251,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundAudio
       objectReference: {fileID: 0}
-    - target: {fileID: 2376849939377067726, guid: 305f03423d4326d4fad4ed6b2a4ab24d,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: b3af3c0bf56c17c4a983f1a2c4c846a2, type: 3}
     - target: {fileID: 2376849939377067727, guid: 305f03423d4326d4fad4ed6b2a4ab24d,
         type: 3}
       propertyPath: m_LocalPosition.x
